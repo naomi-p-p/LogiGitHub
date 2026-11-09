@@ -13,7 +13,7 @@ jobs:
   test:
     runs-on: ubuntu-latest
     timeout-minutes: 20
-    # environment: myEnvironment
+    environment: myEnvironment
     steps:
       - uses: actions/checkout@v5
 
@@ -30,8 +30,8 @@ jobs:
 
       - name: Run tests
         env:
-        #   EMAIL_GITHUB: ${{ vars.TEST_USERNAME }}
-        #   PASSWORD_GITHUB: ${{ secrets.TEST_PASSWORD }}
+          TEST_EMAIL_GITHUB: ${{ vars.TEST_EMAIL_GITHUB }}
+          TEST_PASSWORD_GITHUB: ${{ secrets.TEST_PASSWORD_GITHUB }}
         run: pytest -sv
 
       - name: Upload report and failure artifacts
